@@ -12,11 +12,24 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+
+def find_min_max(values):
+    min_value = values[0]
+    max_value = values[0]
+    for num in values:
+        if num < min_value:
+            min_value = num
+        if num > max_value:
+            max_value = num
+    return min_value, max_value
+
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    numbers = [3, 5, 7, 4, 8, 9, 1]
+    minimum, maximum = find_min_max(numbers)
+    print("numbers entered - ", numbers)
+    print("minimum - ", minimum)
+    print("maximum - ", maximum)
 
 
 if __name__ == "__main__":

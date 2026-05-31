@@ -12,11 +12,27 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+
+def parsed_sentence(sentence):
+    words = []
+    current_word = ""
+    for i in sentence:
+        if i != " ":
+            current_word += i
+        else:
+            if current_word != "":
+                words.append(current_word)
+                current_word = ""
+    if current_word != "":
+        words.append(current_word)
+        return words
+
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    sentence = input("Enter a sentence: ")
+    words = parsed_sentence(sentence)
+    print("Words - ", words)
+    print("number of words - ", len(words))
 
 
 if __name__ == "__main__":
