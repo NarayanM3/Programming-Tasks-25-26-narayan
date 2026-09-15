@@ -10,12 +10,20 @@ TODO:
 - Fill in functions
 - Add demonstration code under `if __name__ == "__main__":`
 """
+import random
+
 
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    table = int(input("Enter the times table you want to be tested on: "))
+    for i in range(12):
+        number = random.randint(1, 12)
+        answer = number * table
+        user_answer = int(input(str(number) + " x " + str(table) + " = "))
+
+        if user_answer == answer:
+            print("Correct!")
+        else:
+            print("Incorrect. The answer is:", answer)
 
 
 if __name__ == "__main__":
