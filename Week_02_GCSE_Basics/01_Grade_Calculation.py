@@ -1,24 +1,20 @@
-"""
-TASK: 01 Grade Calculation
+def get_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
 
-# Skills: Input, output, selection
-Write a program that asks the user for a percentage grade and prints the corresponding letter grade:
-- A: 80-100
-- B: 60-79
-- C: 40-59
-- D: <40
-Include a function def get_grade(score):
-
-TODO:
-- Fill in functions
-- Add demonstration code under `if __name__ == "__main__":`
-"""
 
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+   score = int(input("Enter your score (0-100): "))
+   grade = get_grade(score)
+   print("Your grade is: ", grade)
 
 
 if __name__ == "__main__":

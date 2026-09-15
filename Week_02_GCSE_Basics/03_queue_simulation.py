@@ -3,20 +3,43 @@ TASK: 03 Queue Simulation
 
 # Queue Simulation using OOP
 Make a Queue class with:
-- enqueue, dequeue, peek, size  
+- enqueue, dequeue, peek, size
 Simulate customers joining/leaving.
-
-TODO:
-- Fill in functions
-- Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+class queue:
+    def __init__(self):
+        self.items = []
 
+    def enqueue(self, customer):
+        self.items.append(customer)
+
+    def dequeue(self):
+        if len(self.items) > 0:
+            return self.items.pop(0)
+
+    def peek(self):
+        if len(self.items) > 0:
+            return self.items[0]
+
+    def size(self):
+        return len(self.items)
+
+
+def main():
+    myQueue = queue()
+
+    while True:
+        customer = input("Enter customer name (or 'q' to quit): ")
+        if customer.lower() == 'q':
+          break
+
+        myQueue.enqueue(customer)
+
+    while myQueue.size() > 0:
+        print("Next customer: ", myQueue.peek())
+        print(myQueue.dequeue(), " has been served.")
+        print("Customers left: ", myQueue.size())
 
 if __name__ == "__main__":
     main()
