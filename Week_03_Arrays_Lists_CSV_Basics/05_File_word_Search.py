@@ -10,11 +10,31 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+import urllib.request
+
+import urllib.request
+import ssl
+
+import urllib.request
+import ssl
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    search_term = input("Enter the search term: ")
+
+    url = "https://sherlock-holm.es/stories/plain-text/cano.txt"
+
+    context = ssl._create_unverified_context()
+
+    count = 0
+
+    with urllib.request.urlopen(url, context=context) as file:
+        for line in file:
+            line = line.decode("utf-8")
+
+            if search_term.lower() in line.lower():
+                count += 1
+
+    print("Number of lines containing the search term:", count)
 
 
 if __name__ == "__main__":

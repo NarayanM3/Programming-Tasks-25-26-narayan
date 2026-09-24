@@ -13,11 +13,36 @@ TODO:
 """
 
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
-
+   array = []
+   while True:
+    print("1. Append new values")
+    print("2. Read all current values")
+    print("3. Delete a chosen entry")
+    print("4. Exit")
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        row = int(input("Enter the row number: "))
+        column = int(input("Enter the column number: "))
+        value = input("Enter the value: ")
+        while len(array) <= row:
+            array.append([])
+        while len(array[row]) <= column:
+            array[row].append(None)
+        array[row][column] = value
+    elif choice == "2":
+        for row in array:
+            print(row)
+    elif choice == "3":
+        row = int(input("Enter the row number: "))
+        column = int(input("Enter the column number: "))
+        if row < len(array) and column < len(array[row]):
+            array[row][column] = None
+        else:
+            print("Invalid row or column number.")
+    elif choice == "4":
+        break
+    else:
+        print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()

@@ -40,7 +40,7 @@ def main():
     numbers = get_numbers()
     average = calculate_average(numbers)
     if average is None:
-        print("no numbers.")
+        print("no numbers entered.")
     else:
         print("numbers entered - ", numbers)
         print("average - ", average)

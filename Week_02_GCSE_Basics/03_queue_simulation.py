@@ -30,7 +30,7 @@ def main():
     myQueue = queue()
 
     while True:
-        customer = input("Enter customer name (or 'q' to quit): ")
+        customer = input("Enter customer name (or 'q' to finish): ")
         if customer.lower() == 'q':
           break
 

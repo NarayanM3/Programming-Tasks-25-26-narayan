@@ -14,11 +14,49 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+import csv
+
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    choice = input("Do you want to append, read, or edit the CSV file? ").lower()
+    if choice == "append":
+        name = input("Enter your name: ")
+        age = input("Enter your age: ")
+        favourite_colour = input("Enter your favourite colour: ")
+        extra = input("Enter anything else you want to add: ")
+
+        with open("data.csv", "a", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow([name, age, favourite_colour, extra])
+            print("Data appended to CSV file.")
+
+    elif choice == "read":
+        with open("data.csv", "r") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                print(row)
+
+    elif choice == "edit":
+        rows = []
+        with open("data.csv", "r") as file:
+            reader = csv.reader(file)
+            for i in range(len(list(reader))):
+                rows.append(next(reader))
+
+            number = int(input("Enter the row number you want to edit: "))
+            name = input("Enter your name: ")
+            age = input("Enter your age: ")
+            favourite_colour = input("Enter your favourite colour: ")
+            extra = input("Enter anything else you want to add: ")
+            rows[number] = [name, age, favourite_colour, extra]
+
+            with open("data.csv", "w", newline="") as file:
+                writer = csv.writer(file)
+                writer.writerows(rows)
+                print("Data edited in CSV file.")
+
+    else:
+        print("Invalid choice. Please choose 'append', 'read', or 'edit'.")
 
 
 if __name__ == "__main__":

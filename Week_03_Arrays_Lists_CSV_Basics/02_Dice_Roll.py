@@ -15,11 +15,40 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+import random
+import matplotlib.pyplot as plt
+
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    rolls = int(input("How many times do you want to roll the dice? "))
+
+    results = []
+    totals = [0, 0, 0, 0, 0, 0]
+
+    for i in range(rolls):
+        roll = random.randint(1, 6)
+        results.append(roll)
+        totals[roll - 1] += 1
+        print("Roll:", roll)
+
+    print("Totals for each side:", totals)
+
+    average = sum(results) / len(results)
+    print("Average dice roll:", average)
+
+    print("Counts for each side:")
+
+    for i in range(6):
+        print(i + 1, ":", totals[i])
+
+    sides = [1, 2, 3, 4, 5, 6]
+
+    plt.bar(sides, totals)
+    plt.xlabel("Dice Side")
+    plt.ylabel("Number of Rolls")
+    plt.title("Dice Roll Results")
+    plt.xticks(sides)
+    plt.show()
 
 
 if __name__ == "__main__":

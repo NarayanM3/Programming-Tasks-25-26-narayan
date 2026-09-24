@@ -13,8 +13,8 @@ TODO:
 """
 
 def main():
-    username = input("Enter username: ")
-    password = input("Enter password: ")
+    username = input("Enter initial username: ")
+    password = input("Enter initial password: ")
 
     attempts = 5
 

@@ -12,9 +12,9 @@ def get_grade(score):
 
 
 def main():
-   score = int(input("Enter your score (0-100): "))
-   grade = get_grade(score)
-   print("Your grade is: ", grade)
+    score = int(input("Enter your score (0-100): "))
+    grade = get_grade(score)
+    print("Your grade is...: ", grade)
 
 
 if __name__ == "__main__":

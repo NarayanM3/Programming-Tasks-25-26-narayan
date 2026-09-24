@@ -16,11 +16,40 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+import os
+import matplotlib.pyplot as plt
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    folder = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(folder, "meantemp_daily_totals.txt")
+
+    dates = []
+    temperatures = []
+
+    with open(filename, "r") as file:
+        for line in file:
+            data = line.split()
+
+            try:
+                temperature = float(data[1])
+                dates.append(data[0])
+                temperatures.append(temperature)
+            except (ValueError, IndexError):
+                continue
+
+    highest = max(temperatures)
+    lowest = min(temperatures)
+    average = sum(temperatures) / len(temperatures)
+
+    print("Highest temperature:", highest)
+    print("Lowest temperature:", lowest)
+    print("Average temperature:", average)
+
+    plt.plot(dates, temperatures)
+    plt.xlabel("Date")
+    plt.ylabel("Temperature")
+    plt.title("Daily Mean Temperature")
+    plt.show()
 
 
 if __name__ == "__main__":
