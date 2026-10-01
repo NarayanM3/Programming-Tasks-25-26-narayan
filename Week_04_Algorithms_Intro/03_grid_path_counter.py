@@ -12,12 +12,29 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
 
+def recursive_paths(rows, columns):
+    if rows == 1 or columns == 1:
+        return 1
+    return recursive_paths(rows - 1, columns) + recursive_paths(rows, columns - 1)
+
+def iterative_paths(rows, columns):
+    paths = [[0] * columns for _ in range(rows)]
+    for i in range(rows):
+        paths[i][0] = 1
+    for i in range(columns):
+        paths[0][i] = 1
+    for i in range(1, rows):
+        for j in range(1, columns):
+            paths[i][j] = paths[i - 1][j] + paths[i][j - 1]
+    return paths[rows - 1][columns - 1]
+
+
+def main():
+    rows = int(input("Enter the number of rows: "))
+    columns = int(input("Enter the number of columns: "))
+    print("Recursive paths:", recursive_paths(rows, columns))
+    print("Iterative paths:", iterative_paths(rows, columns))
 
 if __name__ == "__main__":
     main()
