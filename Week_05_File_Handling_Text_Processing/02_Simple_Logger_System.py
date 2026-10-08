@@ -11,12 +11,61 @@ TODO:
 - Fill in functions
 - Add demonstration code under `if __name__ == "__main__":`
 """
+from datetime import datetime
+
+LOG_FILE = "log.txt"
+
+
+def add_log():
+    message = input("Enter log message: ")
+    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open(LOG_FILE, "a") as file:
+        file.write(time + " - " + message + "\n")
+
+    print("Log added.")
+
+
+def view_log():
+    try:
+        with open(LOG_FILE, "r") as file:
+            contents = file.read()
+
+        if contents:
+            print(contents)
+        else:
+            print("The log is empty.")
+
+    except FileNotFoundError:
+        print("The log is empty.")
+
+
+def clear_log():
+    with open(LOG_FILE, "w") as file:
+        file.write("")
+
+    print("Log cleared.")
+
 
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    while True:
+        print("\n1. Add Log")
+        print("2. View Log")
+        print("3. Clear Log")
+        print("4. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            add_log()
+        elif choice == "2":
+            view_log()
+        elif choice == "3":
+            clear_log()
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 
 if __name__ == "__main__":

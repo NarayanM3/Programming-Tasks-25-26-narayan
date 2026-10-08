@@ -13,11 +13,38 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+from fileinput import filename
+
+
+def read_file(filename):
+    with open(filename, 'r') as file:
+        return file.read()
+
+def count_lines(text):
+    return len(text.splitlines())
+
+def count_words(text):
+    return len(text.split())
+
+def count_characters(text):
+    return len(text)
+
+def most_frequent_word(text):
+    words = text.lower().split()
+    word_count = {}
+    for i in range(len(words)):
+       word = words[i].strip('.,!?";:()[]{}')
+       word_count[word] = word_count.get(word, 0) + 1
+    return max(word_count, key=word_count.get)
+
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+    filename = "requirements.txt"
+    text = read_file(filename)
+    print("Number of lines: ", count_lines(text))
+    print("Number of words: ", count_words(text))
+    print("Number of characters: ", count_characters(text))
+    print("Most frequent word: ", most_frequent_word(text))
 
 
 if __name__ == "__main__":
